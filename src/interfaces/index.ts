@@ -27,12 +27,13 @@ export interface User {
     favoriteFruit: string
 }
 
-export interface IState {
-    users: User[]
+export interface IUsers {
+    full: User[],
+    searched: User[]
 }
 
-export interface IProps {
-    users: User[]
+export interface IState {
+    users: IUsers
 }
 
 export interface IAction { type: string, payload?: User[] }
@@ -41,6 +42,4 @@ export interface IUserDetailRoute {
     match: { params: { _id: string } }
 }
 
-export interface IUserDetailProps extends IUserDetailRoute {
-    users: User[]
-}
+export interface IUserDetailProps extends IUserDetailRoute, IUsers { }

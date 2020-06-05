@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { IState, IUserDetailProps } from '../interfaces';
+import { IUsers, IUserDetailProps } from '../interfaces';
 
 const UserDetails: React.FC<IUserDetailProps> = (props: IUserDetailProps) => {
-    const user = props.users.find(user => user._id === props.match.params._id);
+    const user = props.full.find(user => user._id === props.match.params._id);
     return <div>{user?.name}</div>
 }
 
-const mapState = (state: IState) => ({
-    users: state.users
+const mapState = (state: IUsers) => ({
+    users: state.full
 })
 
 const connector = connect(mapState, null)
