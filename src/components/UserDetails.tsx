@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { IUserDetailProps, IState, User } from '../interfaces';
+import { IUserDetailProps, IState } from '../interfaces';
+import Navigation from './Navigation';
+import { LOCATION_API } from '../constants';
 
 const UserDetails: React.FC<IUserDetailProps> = (props: IUserDetailProps) => {
-    const { full, searched } = props.users;
-    let listToSearch: User[] = full;
-    if (searched.length) listToSearch = searched;
-    const user = listToSearch.find(user => user._id === props.match.params._id);
+    const [location, setLocation] = useState('');
+    const user = props.users.full.find(user => user._id === props.match.params._id);
+
+    const loadLocation = async () => {
+        let fetchedLocation = '';
+        try {
+            const buffer = await fetch(LOCATION_API);
+            const data = await buffer.json();
+            fetchedLocation = data.results[0].formatted_address
+        } catch (error) {
+            fetchedLocation = user?.latitude + ', ' + user?.longitude;
+        }
+        setLocation(fetchedLocation);
+    }
+
+    useEffect(() => {
+        loadLocation();
+    }, [])
 
     return (
         <main className='container'>
+            <Navigation currentPage={user?.index} users={props.users.full} />
             <header>Introduction</header>
             <section className='intro'>
                 <section className='intro-photo'>
@@ -41,13 +58,13 @@ const UserDetails: React.FC<IUserDetailProps> = (props: IUserDetailProps) => {
             <section>
                 <p>Company: {user?.company}</p>
                 <p>Balance: {user?.balance}</p>
-                <p>Location: {user?.latitude}, {user?.longitude}</p>
+                <p>Location: {location}</p>
             </section>
             <header>About Me</header>
             <section>
                 <p>Eye color: {user?.eyeColor.toUpperCase()}</p>
                 <p>Favorite Fruit: {user?.favoriteFruit.toUpperCase()}</p>
-                <p>Buddies: {user?.friends.map(friend => friend.name).join(', ')}</p>
+                <p>Friends: {user?.friends.map(friend => friend.name).join(', ')}</p>
             </section>
         </main>
     )

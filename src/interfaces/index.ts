@@ -30,7 +30,9 @@ export interface User {
 
 export interface IUsers {
     full: User[],
-    searched: User[]
+    searched: User[],
+    message?: string,
+    query: string
 }
 
 export interface IState {

@@ -1,9 +1,11 @@
 import { IAction } from "../../interfaces"
-import { LOAD_USER, LOAD_FAIL, SEARCH_USER } from "../../constants";
+import { LOAD_USER, LOAD_FAIL, SEARCH_USER, SEARCH_QUERY } from "../../constants";
 
 const initState = {
     full: [],
-    searched: []
+    searched: [],
+    message: '',
+    query: ''
 }
 
 const users = (state = initState, action: IAction) => {
@@ -13,8 +15,10 @@ const users = (state = initState, action: IAction) => {
             return { ...state, full: payload }
         case SEARCH_USER:
             return { ...state, searched: payload };
+        case SEARCH_QUERY:
+            return { ...state, query: payload }
         case LOAD_FAIL:
-            return { ...state, message: 'Users not found' };
+            return { ...state, message: 'It seems you are not connected to a Network' };
         default:
             return state;
     }
