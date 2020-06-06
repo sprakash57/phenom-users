@@ -5,6 +5,7 @@ import UserList from './components/UserList';
 import UserDetails from './components/UserDetails';
 import store from './store';
 import { loadUser } from './store/actions/user';
+import PageNotFound from './components/PageNotFound';
 
 const App: React.FC = () => {
 
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Switch>
           <Route exact path='/' component={UserList} />
           <Route exact path='/:_id' component={UserDetails} />
+          <Route component={PageNotFound} />
         </Switch>
       </BrowserRouter>
     </Provider>

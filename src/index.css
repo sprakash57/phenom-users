@@ -15,6 +15,12 @@ body {
   background: white;
 }
 
+.alert {
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 4px black;
+}
+
 header {
   padding: 5px;
   font-weight: bold;
@@ -87,6 +93,16 @@ header {
   text-align: center;
   border-bottom: 1px solid lightgray;
   padding-bottom: 1rem;
+}
+
+.instructions > h6 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: tomato;
+}
+
+.instructions h1 {
+  text-decoration: underline;
 }
 
 .search {

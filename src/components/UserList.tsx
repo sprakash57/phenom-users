@@ -6,11 +6,15 @@ import SearchBar from './SearchBar';
 
 const UserList: React.FC<IState> = (props: IState) => {
     const [usersList, setUsersList] = useState<User[]>([]);
+    const [noMatchAlert, setNoMatchAlert] = useState(false);
 
     useEffect(() => {
         let renderList = props.users.full;
         if (props.users.searched && props.users.searched.length !== 0) {
             renderList = props.users.searched;
+            setNoMatchAlert(false);
+        } else if (props.users.searched.length === 0 && props.users.query) {
+            setNoMatchAlert(true);
         }
         setUsersList(renderList);
     }, [props.users]);
@@ -18,10 +22,11 @@ const UserList: React.FC<IState> = (props: IState) => {
     return (
         <main className='container'>
             <section className='instructions'>
-                <h2>Welcome to Phenom users</h2>
+                <h1>Welcome to Phenom Users</h1>
                 <h4>Below is the list of applicants. Select them to know more.</h4>
-                <h5>Hard to find right candidate? Just use the <em>Search Box</em></h5>
+                <h5>Hard to find yourself? Just use the <em>Search Box</em></h5>
                 <SearchBar />
+                {noMatchAlert && <h6>No Matches Found. Showing default list</h6>}
             </section>
             {usersList.length
                 ? (<ul className='user-list'>

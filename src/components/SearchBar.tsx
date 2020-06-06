@@ -15,7 +15,7 @@ const SearchBar: React.FC<SearchProps> = (props: SearchProps) => {
         let searchedList: User[] = [];
         const inputQuery: string = e.currentTarget.value;
         const pattern = new RegExp(inputQuery, 'gi');
-        searchedList = props.users.full.filter(user => user.name.match(pattern) || user.company.match(pattern));
+        searchedList = props.users.full.filter(user => user.name.match(pattern));
         setQuery(inputQuery);
         props.searchUser(searchedList);
         props.searchQuery(inputQuery);
@@ -23,7 +23,7 @@ const SearchBar: React.FC<SearchProps> = (props: SearchProps) => {
 
     return <input
         className='search'
-        placeholder='Seach by Name or Company'
+        placeholder='Seach by Name'
         type="text"
         value={query}
         onChange={handleChange}
