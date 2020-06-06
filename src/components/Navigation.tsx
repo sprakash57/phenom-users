@@ -10,7 +10,6 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = (props) => {
     if (props.currentPage !== undefined) {
         const { currentPage, users } = props;
-        // let currentPage = props.currentPage;
         const next = currentPage < 6 && users.find(user => user.index === currentPage + 1)?._id
         const prev = currentPage > 0 && users.find(user => user.index === currentPage - 1)?._id
 

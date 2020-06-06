@@ -1,8 +1,12 @@
 Phenom Users is bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## 🧾 Available Scripts
+## 🧾 How to setup
 
 In the project directory, you can run:
+
+### `yarn install`
+
+Install the libraries and dependencies reuire to run the app. Its a one time process.
 
 ### `yarn start`
 

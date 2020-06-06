@@ -30,7 +30,7 @@ const UserDetails: React.FC<IUserDetailProps> = (props: IUserDetailProps) => {
     const { index, greeting, isActive, name, age, gender, address, email, phone, about, company, balance, eyeColor, favoriteFruit, tags, friends, registered } = user;
 
     return (
-        <>
+        <React.Fragment>
             <p className='alert'>{greeting}</p>
             <main className='container'>
                 <Navigation currentPage={index} users={props.users.full} />
@@ -74,7 +74,7 @@ const UserDetails: React.FC<IUserDetailProps> = (props: IUserDetailProps) => {
                     <p>Friends: {friends.map(friend => friend.name).join(', ')}</p>
                 </section>
             </main>
-        </>
+        </React.Fragment>
     )
 }
 
