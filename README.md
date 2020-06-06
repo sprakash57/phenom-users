@@ -1,6 +1,6 @@
 Phenom Users is bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 🧾 Available Scripts
 
 In the project directory, you can run:
 
@@ -30,8 +30,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - React-Router
 - Redux-Thunk
 
-### 🚀 Features
+## 🚀 Features
 
 - Search bar - Search User by their name.
-- In-page Navigation - Once you have selected any user. If you want to look next one, just use the navigation bar built inside User detail page.
+- In-page Navigation - Help you to navigate among users without going to Home page everytime.
 - Reverse geocoding (Only work with valid Google Maps API key. Otherwise it will display latitude and longitude strings. Replace **process.env.REACT_APP_GOOGLE_API** with the your API Key)
